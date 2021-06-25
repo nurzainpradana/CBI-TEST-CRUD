@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::post('/pegawai/store', 'PegawaiController@store')->name('pegawai.store');
+Route::delete('/pegawai/destroy/{id}', 'PegawaiController@destroy')->name('pegawai.destroy');
+Route::get('/pegawai/show/{id}', 'PegawaiController@show')->name('pegawai.show');
+Route::get('/pegawai', 'PegawaiController@index')->name('pegawai');
+
+// Route::resource('/pegawai', 'PegawaiController');
