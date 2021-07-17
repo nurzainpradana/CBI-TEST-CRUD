@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('/pegawai/store', 'PegawaiController@store')->name('pegawai.store');
+Route::post('/pegawai/print', 'PegawaiController@print')->name('pegawai.print');
 Route::delete('/pegawai/destroy/{id}', 'PegawaiController@destroy')->name('pegawai.destroy');
 Route::get('/pegawai/show/{id}', 'PegawaiController@show')->name('pegawai.show');
 Route::get('/pegawai', 'PegawaiController@index')->name('pegawai');

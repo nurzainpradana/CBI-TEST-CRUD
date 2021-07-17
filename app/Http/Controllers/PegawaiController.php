@@ -45,4 +45,9 @@ class PegawaiController extends Controller
             'success' => 'Successfully Deleted'
         ]);
     }
+
+    public function print(){
+        $pegawai = Pegawai::all();
+        return view('print_pegawai', ['pegawai' => $pegawai]);
+    }
 }

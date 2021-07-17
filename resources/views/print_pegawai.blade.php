@@ -23,12 +23,11 @@
 <div class="container">
     <h2 style="margin-top: 12px;" class="">
         <br>
-        CRUD Data Pegawai
+        Data Pegawai
      </h2><br>
      <div class="row" style="clear: both;margin-top: 18px; margin-bottom: 18px">
        <div class="col-12 text-right">
-        <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPegawai()">Tambah Pegawai Baru</a>
-         <a href="javascript:void(0)" class="btn btn-primary mb-3" id="print-pegawai" onclick="printPegawai()">Print</a>
+         <!-- <a href="javascript:void(0)" class="btn btn-success mb-3" id="create-new-post" onclick="addPegawai()">Tambah Pegawai Baru</a> -->
        </div>
     </div>
     <div class="row">
@@ -40,7 +39,6 @@
                     <th>NIP</th>
                     <th>Nama</th>
                     <th>Alamat</th>
-                    <th colspan="2" width="10%" class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,9 +48,6 @@
                    <td>{{ $p->nip }}</td>
                    <td>{{ $p->nama }}</td>
                    <td>{{ $p->alamat }}</td>
-                   <td><a href="javascript:void(0)" data-id="{{ $p->id }}" onclick="editPegawai(event.target)" class="btn btn-info">Edit</a></td>
-                   <td>
-                    <a href="javascript:void(0)" data-id="{{ $p->id }}" class="btn btn-danger" onclick="deletePegawai(event.target)">Delete</a></td>
                 </tr>
                 @endforeach
             </tbody>
@@ -105,35 +100,13 @@
 
 </body>
 
-    <script src="{{ asset('js/jQuery.print/jQuery.print.js') }}"></script>
+
+<script src="{{ asset('js/jquery.js') }}"></script>
+<script src="{{ asset('js/jquery.print.js') }}"></script>
+<script src="{{ asset('js/scripts.js') }}"></script>
 
 <script>
     $('pegawai_table').DataTable();
-
-    function printPegawai() {
-
-        let CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajaxSetup({
-            url: '{{ route('pegawai.print') }}',
-            type: 'POST',
-            data: {
-                _token : CSRF_TOKEN,
-            },
-            beforeSend: function(){
-                console.log('Sedang Mencetak ....');
-            },
-            complete: function(){
-                console.log('Selesai Mencetak');
-            }
-        });
-
-        $.ajax({
-            success: function(viewContent){
-                $.print(viewContent);
-            }
-        });
-    }
 
     function addPegawai() {
         $("#pegawai_id").val('');
