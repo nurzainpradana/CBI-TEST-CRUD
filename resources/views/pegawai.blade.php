@@ -193,7 +193,7 @@
                     } else {
                         $('table tbody').prepend('<tr id="row_'+response.data.id+'">"<td>'
                         +response.data.id+'</td><td>'+response.data.nip+'</td><td>'
-                        +response.data.nama+'</td><td>'+response.data.alamat+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPegawai(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePegawai(event.target)">Delete</a></td></tr>');
+                        +response.data.nama+'</td><td>'+response.data.alamat+'</td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" onclick="editPegawai(event.target)" class="btn btn-info">Edit</a></td><td><a href="javascript:void(0)" data-id="'+response.data.id+'" class="btn btn-danger" onclick="deletePegawai(event.target)">Delete</a></td></tr>');
                     }
                     $('#nip').val('');
                     $('#nama').val('');
@@ -224,6 +224,9 @@
             },
             success: function(response) {
                 $("#row_"+id).remove();
+            },
+            error: function(response) {
+                alert("Error")
             }
         });
     }

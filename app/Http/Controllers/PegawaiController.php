@@ -39,11 +39,12 @@ class PegawaiController extends Controller
     }
 
     public function destroy($id){
-        $pegawai = Pegawai::find($id)->delete();
-
+        Pegawai::find($id)->delete();
+        
         return response()->json([
-            'success' => 'Successfully Deleted'
-        ]);
+            'code' => 200,
+            'message' => 'Successfully Deleted'
+        ], 200);
     }
 
     public function print(){
